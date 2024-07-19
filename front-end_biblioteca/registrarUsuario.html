@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Usuario</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .titulo-container {
+            background-color: #8b4513;
+            /* Marrón */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #ffffff;
+            /* Blanco */
+            text-align: center;
+        }
+
+        .container {
+            background-color: #f5deb3;
+            /* Amarillo pálido */
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            color: #8b4513;
+            /* Marrón */
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-color: #8b4513;
+            /* Marrón */
+            margin-bottom: 10px;
+            /* Agregar espacio entre los campos */
+        }
+
+        .btn-registrar,
+        .btn-limpiar,
+        .btn-volver,
+        .btn-lista {
+            border-radius: 20px;
+            /* Hacer los botones redondos */
+        }
+
+        .btn-registrar {
+            background-color: #28a745;
+            /* Verde */
+            border-color: #28a745;
+            /* Verde */
+            color: #ffffff;
+            /* Blanco */
+            margin-top: 20px;
+        }
+
+        .btn-registrar:hover {
+            background-color: #218838;
+            /* Verde más oscuro */
+            border-color: #1e7e34;
+            /* Verde más oscuro */
+        }
+
+        .btn-limpiar {
+            background-color: #007bff;
+            /* Azul */
+            border-color: #007bff;
+            /* Azul */
+            color: #ffffff;
+            /* Blanco */
+            margin-top: 20px;
+            margin-right: 5px;
+            /* Ajustar el espacio entre los botones */
+        }
+
+        .btn-limpiar:hover {
+            background-color: #0056b3;
+            /* Azul más oscuro */
+            border-color: #004685;
+            /* Azul más oscuro */
+        }
+
+        .btn-volver {
+            background-color: #8b4513;
+            /* Marrón */
+            border-color: #8b4513;
+            /* Marrón */
+            color: #ffffff;
+            /* Blanco */
+            margin-top: 20px;
+            margin-left: 5px;
+            /* Ajustar el espacio entre los botones */
+        }
+
+        .btn-volver:hover {
+            background-color: #6e311d;
+            /* Marrón más oscuro */
+            border-color: #603719;
+            /* Marrón más oscuro */
+        }
+
+        .btn-lista {
+            background-color: #28a745;
+            /* Verde */
+            border-color: #28a745;
+            /* Verde */
+            color: #ffffff;
+            /* Blanco */
+            margin-top: 20px;
+        }
+
+        .btn-lista:hover {
+            background-color: #218838;
+            /* Verde más oscuro */
+            border-color: #1e7e34;
+            /* Verde más oscuro */
+        }
+
+        .btn-link {
+            color: #8b4513;
+            /* Marrón */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col mx-auto">
+                <div class="titulo-container">
+                    <h1>Añadir Usuario</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-xl-6 col-12">
+                <label for="nombre_completo">Nombre completo:</label>
+                <input type="text" id="nombre_completo" class="form-control">
+            </div>
+            <div class="col col-xl-6 col-12">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" class="form-control">
+            </div>
+            <div class="col col-xl-6 col-12">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" class="form-control">
+            </div>
+            <div class="col col-xl-6 col-12">
+                <label for="tipo_usuario">Tipo de usuario:</label>
+                <select id="tipo_usuario" class="form-control">
+                    <option value="">Seleccionar...</option>
+                    <option value="lector">Lector</option>
+                    <option value="bibliotecario">Bibliotecario</option>
+                    <option value="administrador">Administrador</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5 id="mensaje-resultado"></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-registrar" id="registrarUsuario">Registrar</button>
+                <a href="./paginaPrincipal.html" class="btn btn-volver">Volver a la página principal</a>
+                <a href="./ListaUsuario.html" class="btn btn-lista">Listado de usuarios</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Archivo JavaScript personalizado (usuario.js) -->
+    <script src="js/usuario.js"></script>
+</body>
+
+</html>

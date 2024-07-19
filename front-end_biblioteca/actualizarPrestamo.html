@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar préstamo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .titulo-container { 
+            background-color: #8b4513;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #f5deb3;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            color: #8b4513;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-color: #8b4513;
+            margin-bottom: 10px;
+        }
+
+        .btn-registrar,
+        .btn-volver,
+        .btn-lista {
+            border-radius: 20px;
+        }
+
+        .btn-registrar {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        .btn-registrar:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        .btn-volver {
+            background-color: #8b4513;
+            border-color: #8b4513;
+            color: #ffffff;
+            margin-top: 20px;
+            margin-left: 5px;
+        }
+
+        .btn-volver:hover {
+            background-color: #6e311d;
+            border-color: #603719;
+        }
+
+        .btn-lista {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        .btn-lista:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        .btn-link {
+            color: #8b4513;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col mx-auto">
+                <div class="titulo-container">
+                    <h1>Actualizar Préstamo</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-xl-6 col-12">
+                <label for="id_usuario" class="form-label">Nombre de usuario</label>
+                <select name="Usuario" id="id_usuario" class="form-select">
+                    <option value="" selected disabled>Seleccione el usuario</option>
+                </select>
+            </div>
+
+            <div class="col col-xl-6 col-12">
+                <label for="id" class="form-label">Título libro</label>
+                <select name="Libro" id="id" class="form-select">
+                    <option value="" selected disabled>Seleccione el libro</option>
+                </select>
+            </div>
+
+            <div class="col col-xl-6 col-12">
+                <label for="fecha_prestamo" class="form-label">Fecha préstamo</label>
+                <input type="date" class="form-control" id="fecha_prestamo" name="fecha_prestamo">
+            </div>
+            <div class="col col-xl-6 col-12">
+                <label for="fecha_devolucion" class="form-label">Fecha devolución</label>
+                <input type="date" class="form-control" id="fecha_devolucion" name="fecha_devolucion">
+            </div>
+            <div class="col col-xl-6 col-12">
+                <label for="estado_prestamo" class="form-label">Estado del préstamo</label>
+                <select id="estado_prestamo" class="form-select">
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="prestado">Prestado</option>
+                    <option value="entregado">Entregado</option>
+                    <option value="cancelado">Cancelado</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-registrar" id="actualizarPrestamo">Actualizar</button>
+                <a href="./paginaPrincipal.html" class="btn btn-volver">Volver a la página principal</a>
+                <a href="./ListaPrestamo.html" class="btn btn-lista">Listado de libros</a>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="js/actualizarPrestamo.js"></script>
+</body>
+
+</html>

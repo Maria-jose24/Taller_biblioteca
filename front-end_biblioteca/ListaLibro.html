@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Libros</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #f5deb3;
+            /* Amarillo pálido */
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .titulo-container {
+            background-color: #8b4513;
+            /* Marrón */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #ffffff;
+            /* Blanco */
+            text-align: center;
+        }
+
+        .form-control {
+            border-color: #8b4513;
+            /* Marrón */
+        }
+
+        .btn {
+            border-radius: 20px;
+            /* Hace los botones redondos */
+        }
+
+        .mb-4>* {
+            margin-bottom: 10px;
+            /* Ajusta el espacio entre los elementos dentro del contenedor */
+        }
+
+        .btn-anadir,
+        .btn-volver {
+            margin: 0 5px;
+            /* Ajusta el espacio horizontal entre los botones */
+        }
+
+        .btn-buscar {
+            background-color: #007bff;
+            /* Azul */
+            border-color: #007bff;
+            /* Azul */
+            color: #ffffff;
+            /* Blanco */
+        }
+
+        .btn-buscar:hover {
+            background-color: #0056b3;
+            /* Azul más oscuro */
+            border-color: #004685;
+            /* Azul más oscuro */
+        }
+
+        .table {
+            background-color: #ffffff;
+            /* Blanco */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th,
+        .table td {
+            border-color: #8b4513;
+            /* Marrón */
+        }
+
+        .footer-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn-volver {
+            background-color: #8b4513;
+            /* Marrón */
+            border-color: #8b4513;
+            /* Marrón */
+            color: #ffffff;
+            /* Blanco */
+        }
+
+        .btn-volver:hover {
+            background-color: #6e311d;
+            /* Marrón más oscuro */
+            border-color: #603719;
+            /* Marrón más oscuro */
+        }
+
+        .btn-anadir {
+            background-color: #28a745;
+            /* Verde */
+            border-color: #28a745;
+            /* Verde */
+            color: #ffffff;
+            /* Blanco */
+        }
+
+        .btn-anadir:hover {
+            background-color: #218838;
+            /* Verde más oscuro */
+            border-color: #1e7e34;
+            /* Verde más oscuro */
+        }
+
+        .btn-editar {
+            background-color: #007bff;
+            /* Azul */
+            border-color: #007bff;
+            /* Azul */
+            color: #ffffff;
+            /* Blanco */
+            margin-right: 5px;
+            /* Espacio entre los botones */
+        }
+
+        .btn-eliminar {
+            background-color: #dc3545;
+            /* Rojo */
+            border-color: #dc3545;
+            /* Rojo */
+            color: #ffffff;
+            /* Blanco */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="titulo-container">
+            <h1>Listado de Libros</h1>
+        </div>
+        <div class="mb-4">
+            <input type="text" id="inputSearch" placeholder="Buscar por título, autor, género o ISBN"
+                class="form-control">
+            <button class="btn btn-buscar" id="buscarLibro">Buscar</button>
+            <a href="./registrarLibro.html" class="btn btn-anadir">Añadir Libro</a>
+            <a href="./paginaPrincipal.html" class="btn btn-volver">Volver a la Página Principal</a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id libro</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>ISBN</th>
+                    <th>Género</th>
+                    <th>Ejemplares Disponibles</th>
+                    <th>Ejemplares Ocupados</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablaLibros">
+                <!-- Contenido generado dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar libro</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Campo oculto para el ID del libro -->
+                        <input id="idLibroOculto" type="hidden">
+                        <div class="col col-xl-6 col-12">
+                            <b><label for="titulo">Título</label></b>
+                            <input type="text" id="titulo" class="form-control" onfocusout="validarTitulo(this);" />
+                        </div>
+                        <div class="col col-xl-6 col-12">
+                            <b><label for="autor">Autor</label></b>
+                            <input type="text" id="autor" class="form-control" onfocusout="validarAutor(this);" />
+                        </div>
+                        <div class="col col-xl-6 col-12">
+                            <b><label for="isbn">ISBN</label></b>
+                            <input type="number" id="isbn" step="1" class="form-control" onfocusout="validarIsbn(this);" />
+                        </div>
+                        <div class="col col-xl-6 col-12">
+                            <b><label for="genero">Género</label></b>
+                            <input type="text" id="genero" class="form-control" onfocusout="validarGenero(this);" />
+                        </div>
+                        <div class="col col-xl-6 col-12">
+                            <b><label for="numero_de_ejemplares_disponibles">Número de ejemplares disponibles</label></b>
+                            <input type="number" id="numero_de_ejemplares_disponibles" step="1" class="form-control" onfocusout="validarNumero_de_ejemplares_disponibles(this);" />
+                        </div>
+                        <div class="col col-xl-6 col-12">
+                            <b><label for="numero_de_ejemplares_ocupados">Número de ejemplares ocupados</label></b>
+                            <input type="number" id="numero_de_ejemplares_ocupados" step="1" class="form-control" onfocusout="validarNumero_de_ejemplares_ocupados(this);" />
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='actualizarLibro.html';">Actualizar</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/libro.js"></script>
+</body>
+
+</html>
