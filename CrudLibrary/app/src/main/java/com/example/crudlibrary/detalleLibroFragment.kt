@@ -50,7 +50,7 @@ class detalleLibroFragment : Fragment() {
 
 
     //se asigna un id existente temporal
-    private var id: String = "bdf2755a-2f85-48c4-b149-c9118e3be853"
+    private var id: String = "cc966008-820e-40b2-90a8-64abc6605c71"
 
     fun consultarLibro() {
         /*
