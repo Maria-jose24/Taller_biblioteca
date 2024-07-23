@@ -6,5 +6,6 @@ class config {
         //ejemplo: se coloca la pi1 del wifi que debe estar conectado con la misma red del celular y se coloca el puerto de la bses de datos
         var urlbBase="http://192.168.147.153:8085/api/v1/"
         var urlLibros= urlbBase+"libro/"
+        var urlUsuarios= urlbBase+"usuario/"
     }
 }

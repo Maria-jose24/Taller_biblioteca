@@ -45,7 +45,7 @@ class guardarLibroFragment : Fragment() {
     private  lateinit var txtDisponible: EditText
     private  lateinit var  txtOcupado: EditText
     private  lateinit var btnGuardar:Button
-    private  var id:String="138d1805-8495-4691-9c9c-adec706edef1"
+    private  var id:String=""
 
     /*
     Request es la peticion que se le hace a la API

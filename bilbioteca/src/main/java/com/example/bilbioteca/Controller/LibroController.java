@@ -63,8 +63,6 @@ public class LibroController {
 			return new ResponseEntity<>("El numero de ejemplares ocupados es obligatorio", HttpStatus.BAD_REQUEST);
 		}
 
-
-
 		LibroService.save(libro);
 		return new ResponseEntity<>(libro,HttpStatus.OK);
 	}
@@ -84,8 +82,8 @@ public class LibroController {
 	//@PathVariable recibe una variable por el enlace
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> findOne ( @PathVariable String id_libro ){
-		var libro= LibroService.findOne(id_libro);
+	public ResponseEntity<Object> findOne ( @PathVariable String id){
+		var libro= LibroService.findOne(id);
 		return new ResponseEntity<>(libro, HttpStatus.OK);
 	}
 
