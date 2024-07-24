@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bilbioteca.interfaceService.IUsuarioService;
 import com.example.bilbioteca.model.Usuario;
+import com.example.bilbioteca.model.respuesta;
 
 @RestController
 @RequestMapping("/api/v1/usuario")
@@ -92,9 +93,12 @@ public class UsuarioController {
 		usuario.setDireccion(usuarioUpdate.getDireccion());
 		usuario.setCorreo(usuarioUpdate.getCorreo());
 		usuario.setTipo_usuario(usuarioUpdate.getTipo_usuario());
+		var respuesta=new respuesta();
+		respuesta.setEstado("success");
+		respuesta.setRespuesta("Usuario Guardado");
 
 		UsuarioService.save(usuario);
-		return new ResponseEntity<>("Usuario actualizado", HttpStatus.OK);
+		return new ResponseEntity<>(respuesta, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id_usuario}")

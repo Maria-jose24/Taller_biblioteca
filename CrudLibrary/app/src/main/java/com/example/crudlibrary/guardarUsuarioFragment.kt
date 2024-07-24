@@ -62,7 +62,7 @@ class guardarUsuarioFragment : Fragment() {
         if (id_usuario !=""){
             var request= JsonObjectRequest(
                 Method.GET,//metodo de la peticion
-                config.urlUsuarios+id_usuario, //url
+                config.urlUsuarios + id_usuario, //url
                 null,//parametros
                 {response->
                     //variable response contiene la respuesta de la API
@@ -123,7 +123,7 @@ class guardarUsuarioFragment : Fragment() {
 
                 var request= JsonObjectRequest(
                     Method.PUT,//metodo de la peticion
-                    config.urlUsuarios+id_usuario, //url
+                    config.urlUsuarios + id_usuario, //url
                     parametros,//parametros
                     {response->
 
@@ -155,7 +155,7 @@ class guardarUsuarioFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_guardar_usuario, container, false)
+        var view= inflater.inflate(R.layout.fragment_guardar_usuario, container, false)
         txtnombre_completo = view.findViewById(R.id.txtnombre_completo)
         txtdireccion = view.findViewById(R.id.txtdireccion)
         txtcorreo = view.findViewById(R.id.txtcorreo)

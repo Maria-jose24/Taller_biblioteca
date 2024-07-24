@@ -12,7 +12,6 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.crudlibrary.config.config
-import com.example.crudlibrary.models.libro
 import com.example.crudlibrary.models.usuario
 import com.google.gson.Gson
 import org.json.JSONObject
@@ -45,12 +44,12 @@ class detalleUsuarioFragment : Fragment() {
     private lateinit var lblcorreo: TextView
     private lateinit var lbltipo_usuario: TextView
     private lateinit var btnEditar: Button
-    private lateinit var btnEliminar:Button
+    private lateinit var btnEliminar: Button
 
     //Se asigna un id existente temporal
-    private var id_usuario: String=""
+    private var id_usuario: String = "b3dd68d0-c59c-4716-8e50-7da19802813a"
 
-    fun consultarUsuario(){
+    fun consultarUsuario() {
         /*
         Solo se debe consultar, si el ID
         es diferente a vacio
@@ -95,9 +94,9 @@ class detalleUsuarioFragment : Fragment() {
         lblcorreo = view.findViewById(R.id.lblcorreo)
         lbltipo_usuario = view.findViewById(R.id.lbltipo_usuario)
         btnEditar = view.findViewById(R.id.btnEditar)
-        btnEditar.setOnClickListener {editarUsuario()}
+        btnEditar.setOnClickListener { editarUsuario() }
         btnEliminar = view.findViewById(R.id.btnEliminar)
-        btnEliminar.setOnClickListener{eliminarUsuario()}
+        btnEliminar.setOnClickListener { eliminarUsuario() }
         consultarUsuario()
         return view
     }
@@ -114,7 +113,7 @@ class detalleUsuarioFragment : Fragment() {
             config.urlUsuarios + id_usuario, //url
             parametros, //parametros
             { response ->
-                Toast.makeText(context, "Se actualizo correctamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, response.getString("respuesta"), Toast.LENGTH_LONG).show()
             },
             { error ->
                 Toast.makeText(context, "Error al actualizar", Toast.LENGTH_LONG).show()
@@ -129,21 +128,24 @@ class detalleUsuarioFragment : Fragment() {
         if (id_usuario != "") {
             val request = JsonObjectRequest(
                 Request.Method.DELETE, // Método DELETE para eliminar el recurso
-                config.urlUsuarios + id, // URL del recurso con el ID del usuario a eliminar
+                config.urlUsuarios + id_usuario, // URL del recurso con el ID del usuario a eliminar
                 null, // No se envían parámetros en el cuerpo para DELETE
                 { response ->
-                    Toast.makeText(context, "Usuario eliminado correctamente", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Usuario eliminado correctamente", Toast.LENGTH_LONG)
+                        .show()
                     // Aquí puedes implementar lógica adicional después de eliminar el libro
                 },
                 { error ->
-                    Toast.makeText(context, "Error al eliminar el usuario", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Error al eliminar el usuario", Toast.LENGTH_LONG)
+                        .show()
                     // Manejo de errores en la petición DELETE
                 }
             )
             val queue = Volley.newRequestQueue(context)
             queue.add(request)
         } else {
-            Toast.makeText(context, "No hay id válido para eliminar el usuario", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "No hay id válido para eliminar el usuario", Toast.LENGTH_LONG)
+                .show()
         }
     }
 
