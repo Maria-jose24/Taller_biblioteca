@@ -10,6 +10,7 @@
     <string name="lblDisponible">Disponibles</string>
     <string name="lblOcupados">Ocupados</string>
     <string name="lblPortada">Lista de Libros</string>
-    <!--agregar uno por cada texto-->
 
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
 </resources>

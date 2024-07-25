@@ -11,121 +11,143 @@
         android:src="@drawable/fondo"
         android:scaleType="centerCrop"
         android:alpha="0.9" />
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:padding="30dp">
-
-        <TextView
-            android:id="@+id/lblPortada"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lista de usuario"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="35dp"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:id="@+id/lblnombre_completo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nombre completo"
-            android:textColor="#FFFFFF"
-            android:textSize="21dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/txtnombre_completo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="text"
-            android:textColor="#FFFFFF"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/lbldireccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dirección"
-            android:textColor="#FFFFFF"
-            android:textSize="21dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/txtdireccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="text"
-            android:textColor="#FFFFFF"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/lblcorreo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Correo"
-            android:textColor="#FFFFFF"
-            android:textSize="21dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/txtcorreo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="text"
-            android:textColor="#FFFFFF"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/lbltipo_usuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tipo de usuario"
-            android:textColor="#FFFFFF"
-            android:textSize="21dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/txttipo_usuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="text"
-            android:textColor="#FFFFFF"
-            android:textSize="18dp"
-            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="94dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnGuardar"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/lblPortada"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:backgroundTint="#8C8C8C"
-                android:text="Guardar"
+                android:text="Registrar Usuario"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="28sp"
                 android:textColor="#FFFFFF"
-                android:textSize="16dp" />
+                android:layout_marginBottom="20dp" />
 
+            <TextView
+                android:id="@+id/lblnombre_completo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre completo"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
+
+            <EditText
+                android:id="@+id/txtnombre_completo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:id="@+id/lbldireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dirección"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
+
+            <EditText
+                android:id="@+id/txtdireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:id="@+id/lblcorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Correo"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
+
+            <EditText
+                android:id="@+id/txtcorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:id="@+id/lbltipo_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de usuario"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp" />
+
+            <EditText
+                android:id="@+id/txttipo_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:backgroundTint="#8b4513"
+                    android:text="Guardar"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnListaUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#8b4513"
+                    android:text="Lista Usuario"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 </FrameLayout>

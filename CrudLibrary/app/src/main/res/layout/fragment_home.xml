@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f5f5f5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#8b4513"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Biblioteca Mj"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sobre Nuestra Biblioteca"
+                android:textColor="#8b4513"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="En nuestra biblioteca Mj, ofrecemos una extensa colección de libros de diferentes géneros, servicios de préstamo eficientes y un ambiente acogedor para todos los usuarios. Nuestro personal siempre está dispuesto a ayudar y garantizar que tengas una experiencia agradable."
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Testimonios"
+                android:textColor="#8b4513"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/texto1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/texto2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/texto3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#8b4513"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="© 2024 Nuestra Biblioteca. Todos los derechos reservados."
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Política de privacidad Términos de servicio"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:gravity="center" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
