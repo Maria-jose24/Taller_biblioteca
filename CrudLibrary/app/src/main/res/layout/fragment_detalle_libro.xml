@@ -159,17 +159,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:backgroundTint="#8C8C8C"
+                android:backgroundTint="#8b4513"
                 android:text="Editar"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
+
+
 
             <Button
                 android:id="@+id/btnEliminar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:backgroundTint="#8C8C8C"
+                android:backgroundTint="#8b4513"
                 android:text="Eliminar"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
