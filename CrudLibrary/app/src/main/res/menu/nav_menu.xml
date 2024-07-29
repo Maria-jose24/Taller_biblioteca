@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn = "navigation_view">
+    tools:showIn="navigation_view">
 
-    <group
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
 
         <item
             android:id="@+id/nav_inicio"
             android:icon="@drawable/house_01_svgrepo_com"
-            android:title="Inicio"/>
+            android:title="Inicio" />
 
         <item
             android:id="@+id/nav_libro"
             android:icon="@drawable/libro"
-            android:title="Libro"/>
+            android:title="Libro" />
 
         <item
             android:id="@+id/nav_usuario"
             android:icon="@drawable/user"
-            android:title="Usuario"/>
+            android:title="Usuario" />
 
         <item
             android:id="@+id/nav_prestamo"
             android:icon="@drawable/prestamo"
-            android:title="Prestamo"/>
+            android:title="Prestamo" />
 
         <item
             android:id="@+id/nav_multa"
             android:icon="@drawable/multa"
-            android:title="Multas"/>
+            android:title="Multas" />
     </group>
 </menu>

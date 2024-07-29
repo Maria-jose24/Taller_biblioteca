@@ -166,7 +166,7 @@
                     android:textSize="16dp" />
 
                 <Button
-                    android:id="@+id/btnListaLibro"
+                    android:id="@+id/btnListaLibros"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8b4513"

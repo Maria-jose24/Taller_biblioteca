@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -26,7 +25,7 @@ class guardarLibroFragment : Fragment() {
     private lateinit var txtDisponible: EditText
     private lateinit var txtOcupado: EditText
     private lateinit var btnGuardar: Button
-    private lateinit var btnListaLibro: Button
+    private lateinit var btnListaLibros: Button
     private var id: String = ""
 
     private fun consultarLibro() {
@@ -97,9 +96,17 @@ class guardarLibroFragment : Fragment() {
         txtDisponible = view.findViewById(R.id.txtDisponible)
         txtOcupado = view.findViewById(R.id.txtOcupado)
         btnGuardar = view.findViewById(R.id.btnGuardar)
-        btnListaLibro = view.findViewById(R.id.btnListaLibro)
+        btnListaLibros = view.findViewById(R.id.btnListaLibros)
 
         btnGuardar.setOnClickListener { guardarLibro() }
+        btnListaLibros.setOnClickListener {
+            // Navegar al fragmento de lista de libros
+            val fragment = listaLibroFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, fragment)
+                ?.addToBackStack(null)
+                ?.commit()
+        }
 
         return view
     }

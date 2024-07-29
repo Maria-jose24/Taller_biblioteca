@@ -36,17 +36,19 @@ android {
 }
 
 dependencies {
-
-    //dependecia para hacer peticiones RestFull
+    // Dependencia para hacer peticiones RestFull
     implementation("com.android.volley:volley:1.2.1")
-    //tareas en segundo hilo
-    implementation(
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    //interpretar la respuesta json
+    // Tareas en segundo hilo
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    // Interpretar la respuesta JSON
     implementation("com.google.code.gson:gson:2.10.1")
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.0")
+
+    // Glide para cargar imágenes
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -56,5 +58,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
 }

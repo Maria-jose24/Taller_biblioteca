@@ -59,7 +59,13 @@ class listaLibroFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_lista_libro, container, false)
         recyclerViewLibro = view.findViewById(R.id.RecyclerViewLibro)
         recyclerViewLibro.layoutManager = LinearLayoutManager(context)
-        adapterLibro = AdapterLibro(emptyList())
+
+        adapterLibro = AdapterLibro(emptyList(), onEditClick = { libro ->
+            // Manejar clic en editar
+        }, onDeleteClick = { libro ->
+            // Manejar clic en eliminar
+        })
+
         recyclerViewLibro.adapter = adapterLibro
         cargarDatos()
         return view
