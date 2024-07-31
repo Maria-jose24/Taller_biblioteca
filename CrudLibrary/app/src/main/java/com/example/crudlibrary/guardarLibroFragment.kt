@@ -16,7 +16,7 @@ import com.example.crudlibrary.models.libro
 import com.google.gson.Gson
 import org.json.JSONObject
 
-class guardarLibroFragment : Fragment() {
+class  guardarLibroFragment : Fragment() {
 
     private lateinit var txtTitulo: EditText
     private lateinit var txtAutor: EditText

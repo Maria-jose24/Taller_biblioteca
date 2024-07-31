@@ -10,7 +10,8 @@
     <string name="lblDisponible">Disponibles</string>
     <string name="lblOcupados">Ocupados</string>
     <string name="lblPortada">Lista de Libros</string>
-
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar</string>
     <string name="open_nav">Open Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
 </resources>

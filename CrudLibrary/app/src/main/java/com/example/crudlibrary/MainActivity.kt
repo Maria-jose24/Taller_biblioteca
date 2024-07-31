@@ -19,16 +19,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         drawerLayout = findViewById(R.id.drawer_layout)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
-
-        // Configure Toolbar
-       // setSupportActionBar(toolbar)
-
+        setSupportActionBar(toolbar)
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
-
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav
         )
