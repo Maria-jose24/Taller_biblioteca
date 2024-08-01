@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.android.volley.Request
@@ -49,6 +50,7 @@ class detalleLibroFragment : Fragment() {
     private lateinit var lblOcupados: TextView
     private lateinit var btnEditar: Button
     private lateinit var btnEliminar: Button
+    private lateinit var btnVolver: ImageView
 
     private var id: String = ""
 
@@ -93,12 +95,20 @@ class detalleLibroFragment : Fragment() {
         btnEditar.setOnClickListener { editarLibro() }
         btnEliminar = view.findViewById(R.id.btnEliminar)
         btnEliminar.setOnClickListener { id?.let { eliminarLibro(it) } }
+        btnVolver = view.findViewById(R.id.imageView2)
+
+        btnVolver.setOnClickListener {
+            // Regresa al fragmento de la lista de libros
+            requireActivity().supportFragmentManager.popBackStack()
+        }
 
         id?.let {
             consultarLibro()
         }
         return view
     }
+
+
 
     private fun editarLibro() {
         id?.let {

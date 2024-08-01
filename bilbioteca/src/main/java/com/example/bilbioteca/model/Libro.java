@@ -38,8 +38,8 @@ public class Libro {
 	@Column (name="numero_de_ejemplares_ocupados",nullable=false,length=40)
 	private String numero_de_ejemplares_ocupados;
 
-	@OneToMany(mappedBy = "libro")
-	private List<Prestamo> prestamos;
+	/*@OneToMany(mappedBy = "libro")
+	private List<Prestamo> prestamos;*/
 
 
 	public Libro() {

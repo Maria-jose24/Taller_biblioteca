@@ -1,10 +1,13 @@
 package com.example.bilbioteca.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity(name="Usuario")
 public class Usuario {
@@ -26,6 +29,9 @@ public class Usuario {
 
 	@Column(name="tipo_usuario",nullable=false,length=40)
 	private String tipo_usuario;
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<Prestamo>Prestamos;
 
 	public Usuario() {
 		super();

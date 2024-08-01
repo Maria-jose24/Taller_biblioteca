@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -41,30 +41,37 @@ class listaLibroFragment : Fragment() {
         }
     }
 
-    private lateinit var view: View
+    private lateinit var rootView: View
+    private lateinit var editTextBuscar: EditText
+    private lateinit var buttonLupa: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        view = inflater.inflate(R.layout.fragment_lista_libro, container, false)
-        cargar_libro()
-        VolverRegistro()
+        rootView = inflater.inflate(R.layout.fragment_lista_libro, container, false)
+        editTextBuscar = rootView.findViewById(R.id.editTextBuscar)
+        buttonLupa = rootView.findViewById(R.id.buttonLupa)
 
+        cargar_libro("")
+        setupVolverRegistro()
 
-        // Configura el botón de casa lleva al inicio
-        val buttonInicio = view.findViewById<Button>(R.id.buttoninicio)
+        buttonLupa.setOnClickListener {
+            val filtro = editTextBuscar.text.toString().trim()
+            cargar_libro(filtro)
+        }
+
+        // Configura el botón de casa, lleva al inicio
+        val buttonInicio = rootView.findViewById<Button>(R.id.buttoninicio)
         buttonInicio.setOnClickListener {
             val intent = Intent(requireContext(), MainActivity::class.java)
             startActivity(intent)
         }
-        return view
+        return rootView
     }
 
-
-
-    private fun VolverRegistro() {
-        val volverButton = view.findViewById<ImageView>(R.id.imageView2)
+    private fun setupVolverRegistro() {
+        val volverButton = rootView.findViewById<ImageView>(R.id.imageView2)
         volverButton.setOnClickListener {
             requireFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, guardarLibroFragment())
@@ -73,14 +80,19 @@ class listaLibroFragment : Fragment() {
         }
     }
 
+    private fun cargar_libro(filtro: String) {
+        val url = if (filtro.isEmpty()) {
+            config.urlLibros
+        } else {
+            "${config.urlLibros}busquedafiltro/$filtro"
+        }
 
-    private fun cargar_libro() {
         val request = JsonArrayRequest(
             Request.Method.GET,
-            config.urlLibros,
+            url,
             null,
             { response ->
-                val recycler = view.findViewById<RecyclerView>(R.id.listaLibro)
+                val recycler = rootView.findViewById<RecyclerView>(R.id.listaLibro)
                 recycler.layoutManager = LinearLayoutManager(requireContext())
                 val adapter = adapterLibro(response, requireContext())
 
@@ -100,9 +112,9 @@ class listaLibroFragment : Fragment() {
                 adapter.onclickEliminar = { libro ->
                     val builder = AlertDialog.Builder(requireContext())
                     builder.setMessage("¿Desea eliminar este libro?")
-                        .setPositiveButton("Si") { _, _ ->
-                            EliminarLibro(libro.getString("id")) {
-                                cargar_libro() // Actualiza la lista después de eliminar
+                        .setPositiveButton("Sí") { _, _ ->
+                            eliminarLibro(libro.getString("id")) {
+                                cargar_libro(filtro) // Actualiza la lista después de eliminar
                             }
                         }
                         .setNegativeButton("No", null)
@@ -118,7 +130,7 @@ class listaLibroFragment : Fragment() {
         queue.add(request)
     }
 
-    private fun EliminarLibro(id: String, onSuccess: () -> Unit) {
+    private fun eliminarLibro(id: String, onSuccess: () -> Unit) {
         val request = StringRequest(
             Request.Method.DELETE,
             "${config.urlLibros}$id",

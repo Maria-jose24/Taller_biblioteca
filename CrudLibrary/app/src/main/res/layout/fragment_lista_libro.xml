@@ -28,6 +28,8 @@
             android:textColorLink="#8b4513"
             android:ems="10"
             android:hint="Buscar"
+            android:textColorHint="#000000"
+            android:textColorHighlight="#000000"
             android:inputType="text"
             android:padding="15dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"

@@ -1,7 +1,8 @@
-package com.example.bilbioteca.Controller;
+/*package com.example.bilbioteca.Controller;
 
 import java.time.LocalDate;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.bilbioteca.interfaceService.ILibroService;
 import com.example.bilbioteca.interfaceService.IPrestamoService;
+import com.example.bilbioteca.interfaceService.IUsuarioService;
 import com.example.bilbioteca.model.Prestamo;
+import com.example.bilbioteca.model.Usuario;
 
 @RequestMapping("/api/v1/prestamo")
 @RestController
@@ -25,7 +29,25 @@ public class PrestamoController {
 
 	@Autowired
 	private IPrestamoService PrestamoService;
+	
+	@Autowired
+	private IUsuarioService UsuarioService;
 
+	@Autowired
+	private ILibroService LibroService;
+	
+	@GetMapping("/usuariosregistrados")
+	public ResponseEntity<List<Usuario>> usuariosRegistrados(){
+		List<Usuario> listaUsuarios = UsuarioService.findAll();
+		return new ResponseEntity<>(listaUsuarios, HttpStatus.OK);
+	}
+	
+	@GetMapping("/librosregistrados")
+	public ResponseEntity<List<Libro>> librosRegistrados(){
+		List<Libro> listaLibros = LibroService.findAll();
+		return new ResponseEntity<>(listaLibros, HttpStatus.OK);
+	}
+	
 	@PostMapping("/")
 	public ResponseEntity<Object> save(@RequestBody Prestamo prestamo) {
 
@@ -112,3 +134,4 @@ public class PrestamoController {
 		return new ResponseEntity<>("Prestamo eliminado",HttpStatus.OK);
 	}
 }
+*/

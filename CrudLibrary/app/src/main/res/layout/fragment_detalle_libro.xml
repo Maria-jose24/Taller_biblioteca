@@ -11,22 +11,37 @@
         android:src="@drawable/fondo"
         android:scaleType="centerCrop"
         android:alpha="0.9" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp">
 
-        <TextView
-            android:id="@+id/lblPortada"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detalle de libro"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="35dp"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/volver" />
+
+            <TextView
+                android:id="@+id/lblPortada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detalle de libro"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="35dp"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtTitulo"
@@ -164,8 +179,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
 
-
-
             <Button
                 android:id="@+id/btnEliminar"
                 android:layout_width="wrap_content"
@@ -175,7 +188,6 @@
                 android:text="Eliminar"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
-
         </LinearLayout>
 
     </LinearLayout>
