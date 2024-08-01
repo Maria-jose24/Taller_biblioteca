@@ -1,10 +1,13 @@
 package com.example.bilbioteca.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity(name="Libro")
 public class Libro {
@@ -35,6 +38,8 @@ public class Libro {
 	@Column (name="numero_de_ejemplares_ocupados",nullable=false,length=40)
 	private String numero_de_ejemplares_ocupados;
 
+	@OneToMany(mappedBy = "libro")
+	private List<Prestamo> prestamos;
 
 
 	public Libro() {
