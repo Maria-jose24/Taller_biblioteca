@@ -109,16 +109,12 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="5dp" />
 
-            <EditText
-                android:id="@+id/txttipo_usuario"
+            <Spinner
+                android:id="@+id/spinner_tipo_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:ems="10"
-                android:inputType="text"
+                android:backgroundTint="#8b4513"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:layout_marginBottom="20dp" />
 
             <LinearLayout
@@ -133,16 +129,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:backgroundTint="#8b4513"
+                    android:textStyle="bold"
                     android:text="Guardar"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/btnListaUsuario"
+                    android:id="@+id/btnListaUsuarios"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#8b4513"
                     android:text="Lista Usuario"
+                    android:textStyle="bold"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
 

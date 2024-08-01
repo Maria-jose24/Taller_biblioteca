@@ -176,6 +176,7 @@
                 android:layout_marginRight="20dp"
                 android:backgroundTint="#8b4513"
                 android:text="Editar"
+                android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
 
@@ -186,6 +187,7 @@
                 android:layout_marginRight="20dp"
                 android:backgroundTint="#8b4513"
                 android:text="Eliminar"
+                android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:textSize="16dp" />
         </LinearLayout>

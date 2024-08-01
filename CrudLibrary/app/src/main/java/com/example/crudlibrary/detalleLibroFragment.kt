@@ -108,8 +108,6 @@ class detalleLibroFragment : Fragment() {
         return view
     }
 
-
-
     private fun editarLibro() {
         id?.let {
             val parametros = JSONObject()
@@ -139,7 +137,6 @@ class detalleLibroFragment : Fragment() {
 
 
             private fun eliminarLibro(id: String) {
-
                 val request = JsonObjectRequest(
                     Request.Method.DELETE,
                     config.urlLibros + id,
