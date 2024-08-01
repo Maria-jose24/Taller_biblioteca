@@ -6,4 +6,4 @@ class usuario (
     var direccion:String,
     var correo:String,
     var tipo_usuario:String,
-    )
+)

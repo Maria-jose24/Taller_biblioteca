@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:hardwareAccelerated="true"
     tools:context=".detalleUsuarioFragment">
 
     <ImageView
@@ -112,16 +113,13 @@
             android:textSize="21dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/lbltipo_usuario"
+        <Spinner
+            android:id="@+id/spinner_tipo_usuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="text"
+            android:backgroundTint="#8b4513"
             android:textColor="#FFFFFF"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

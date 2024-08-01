@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import com.android.volley.Request
@@ -45,7 +47,7 @@ class detalleUsuarioFragment : Fragment() {
     private lateinit var lblnombre_completo: TextView
     private lateinit var lbldireccion: TextView
     private lateinit var lblcorreo: TextView
-    private lateinit var lbltipo_usuario: TextView
+    private lateinit var spinnerTipoUsuario: Spinner
     private lateinit var btnEditar: Button
     private lateinit var btnEliminar: Button
     private lateinit var btnVolver: ImageView
@@ -65,8 +67,9 @@ class detalleUsuarioFragment : Fragment() {
                     lblnombre_completo.text = usuario.nombre_completo
                     lbldireccion.text = usuario.direccion
                     lblcorreo.text = usuario.correo
-                    lbltipo_usuario.text = usuario.tipo_usuario
-                    Toast.makeText(context, "Se consulto correctamente", Toast.LENGTH_LONG).show()
+                    val adapter = spinnerTipoUsuario.adapter as ArrayAdapter<String>
+                    spinnerTipoUsuario.setSelection(adapter.getPosition(usuario.tipo_usuario))
+                    Toast.makeText(context, "Se consultó correctamente", Toast.LENGTH_LONG).show()
                 },
                 { error ->
                     Toast.makeText(context, "Error al consultar", Toast.LENGTH_LONG).show()
@@ -85,7 +88,7 @@ class detalleUsuarioFragment : Fragment() {
         lblnombre_completo = view.findViewById(R.id.lblnombre_completo)
         lbldireccion = view.findViewById(R.id.lbldireccion)
         lblcorreo = view.findViewById(R.id.lblcorreo)
-        lbltipo_usuario = view.findViewById(R.id.lbltipo_usuario)
+        spinnerTipoUsuario = view.findViewById(R.id.spinner_tipo_usuario)
         btnEditar = view.findViewById(R.id.btnEditar)
         btnEditar.setOnClickListener { editarUsuario() }
         btnEliminar = view.findViewById(R.id.btnEliminar)
@@ -107,7 +110,7 @@ class detalleUsuarioFragment : Fragment() {
             parametros.put("nombre_completo", lblnombre_completo.text.toString())
             parametros.put("direccion", lbldireccion.text.toString())
             parametros.put("correo", lblcorreo.text.toString())
-            parametros.put("tipo_usuario", lbltipo_usuario.text.toString())
+            parametros.put("tipo_usuario", spinnerTipoUsuario.selectedItem.toString())
 
             val request = JsonObjectRequest(
                 Request.Method.PUT, //metodo de la peticion
