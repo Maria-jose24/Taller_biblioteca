@@ -17,28 +17,14 @@ import com.example.crudlibrary.models.libro
 import com.google.gson.Gson
 import org.json.JSONObject
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-private var id: String? =null
-/**
- * A simple [Fragment] subclass.
- * Use the [detalleLibroFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class detalleLibroFragment : Fragment() {
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var id: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            id = it.getString("id").toString()
+            id = it.getString("id")
         }
     }
 
@@ -51,8 +37,6 @@ class detalleLibroFragment : Fragment() {
     private lateinit var btnEditar: Button
     private lateinit var btnEliminar: Button
     private lateinit var btnVolver: ImageView
-
-    private var id: String = ""
 
     private fun consultarLibro() {
         id?.let {
@@ -94,11 +78,14 @@ class detalleLibroFragment : Fragment() {
         btnEditar = view.findViewById(R.id.btnEditar)
         btnEditar.setOnClickListener { editarLibro() }
         btnEliminar = view.findViewById(R.id.btnEliminar)
-        btnEliminar.setOnClickListener { id?.let { eliminarLibro(it) } }
+        btnEliminar.setOnClickListener {
+            id?.let { libroId ->
+                eliminarLibro(libroId)
+            }
+        }
         btnVolver = view.findViewById(R.id.imageView2)
 
         btnVolver.setOnClickListener {
-            // Regresa al fragmento de la lista de libros
             requireActivity().supportFragmentManager.popBackStack()
         }
 
@@ -110,71 +97,62 @@ class detalleLibroFragment : Fragment() {
 
     private fun editarLibro() {
         id?.let {
-            val parametros = JSONObject()
-            parametros.put("titulo", lblTitulo.text.toString())
-            parametros.put("autor", lblAutor.text.toString())
-            parametros.put("genero", lblGenero.text.toString())
-            parametros.put("isbn", lblIsbn.text.toString())
-            parametros.put("numero_de_ejemplares_disponibles", lblDisponibles.text.toString())
-            parametros.put("numero_de_ejemplares_ocupados", lblOcupados.text.toString())
-
-                val request = JsonObjectRequest(
-                    Request.Method.PUT,
-                    config.urlLibros + it,
-                    parametros,
-                    { response ->
-                        Toast.makeText(context, "Se actualizó correctamente", Toast.LENGTH_LONG)
-                            .show()
-                    },
-                    { error ->
-                        Toast.makeText(context, "Error al actualizar", Toast.LENGTH_LONG).show()
-                    }
-                )
-                val queue = Volley.newRequestQueue(context)
-                queue.add(request)
-            }
-        }
-
-
-            private fun eliminarLibro(id: String) {
-                val request = JsonObjectRequest(
-                    Request.Method.DELETE,
-                    config.urlLibros + id,
-                    null,
-                    { response ->
-                        Toast.makeText(context, "Libro eliminado correctamente", Toast.LENGTH_LONG)
-                            .show()
-                    },
-                    { error ->
-                        Toast.makeText(context, "Error al eliminar el libro", Toast.LENGTH_LONG)
-                            .show()
-                    }
-                )
-                val queue = Volley.newRequestQueue(context)
-                queue.add(request)
+            val parametros = JSONObject().apply {
+                put("titulo", lblTitulo.text.toString())
+                put("autor", lblAutor.text.toString())
+                put("genero", lblGenero.text.toString())
+                put("isbn", lblIsbn.text.toString())
+                put("numero_de_ejemplares_disponibles", lblDisponibles.text.toString())
+                put("numero_de_ejemplares_ocupados", lblOcupados.text.toString())
             }
 
-
-
-        companion object {
-            /**vb
-             * Use this factory method to create a new instance of
-             * this fragment using the provided parameters.
-             *
-             * @param param1 Parameter 1.
-             * @param param2 Parameter 2.
-             * @return A new instance of fragment detalleLibroFragment.
-             */
-            // TODO: Rename and change types and number of parameters
-
-            @JvmStatic
-            fun newInstance(id: String) =
-                detalleLibroFragment().apply {
-                    arguments = Bundle().apply {
-                        putString("id", id)
-                    }
+            val request = JsonObjectRequest(
+                Request.Method.PUT,
+                config.urlLibros + it,
+                parametros,
+                { response ->
+                    Toast.makeText(context, "Se actualizó correctamente", Toast.LENGTH_LONG).show()
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, listaLibroFragment())
+                        .addToBackStack(null)
+                        .commit()
+                },
+                { error ->
+                    Toast.makeText(context, "Error al actualizar", Toast.LENGTH_LONG).show()
                 }
+            )
+            val queue = Volley.newRequestQueue(context)
+            queue.add(request)
         }
     }
 
+    private fun eliminarLibro(id: String) {
+        val request = JsonObjectRequest(
+            Request.Method.DELETE,
+            config.urlLibros + id,
+            null,
+            { response ->
+                Toast.makeText(context, "Libro eliminado correctamente", Toast.LENGTH_LONG).show()
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, listaLibroFragment())
+                    .addToBackStack(null)
+                    .commit()
+            },
+            { error ->
+                Toast.makeText(context, "Error al eliminar el libro", Toast.LENGTH_LONG).show()
+            }
+        )
+        val queue = Volley.newRequestQueue(context)
+        queue.add(request)
+    }
 
+    companion object {
+        @JvmStatic
+        fun newInstance(id: String) =
+            detalleLibroFragment().apply {
+                arguments = Bundle().apply {
+                    putString("id", id)
+                }
+            }
+    }
+}

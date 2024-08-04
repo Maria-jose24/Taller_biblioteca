@@ -28,59 +28,6 @@ class guardarUsuarioFragment : Fragment() {
     private lateinit var btnListaUsuarios: Button
     private var id_usuario: String = ""
 
-    private fun consultarUsuario() {
-        if (id_usuario.isNotEmpty()) {
-            val request = JsonObjectRequest(
-                Request.Method.GET,
-                config.urlUsuarios + id_usuario,
-                null,
-                { response ->
-                    val gson = Gson()
-                    val usuario = gson.fromJson(response.toString(), usuario::class.java)
-                    txtnombre_completo.setText(usuario.nombre_completo)
-                    txtdireccion.setText(usuario.direccion)
-                    txtcorreo.setText(usuario.correo)
-                    val adapter = spinnerTipoUsuario.adapter as ArrayAdapter<String>
-                    spinnerTipoUsuario.setSelection(adapter.getPosition(usuario.tipo_usuario))
-                    Toast.makeText(context, "Se consultó correctamente", Toast.LENGTH_LONG).show()
-                },
-                { error ->
-                    Toast.makeText(context, "Error al consultar", Toast.LENGTH_LONG).show()
-                }
-            )
-            val queue = Volley.newRequestQueue(context)
-            queue.add(request)
-        }
-    }
-
-    fun guardarUsuario() {
-        try {
-            val parametros = JSONObject().apply {
-                put("nombre_completo", txtnombre_completo.text.toString())
-                put("direccion", txtdireccion.text.toString())
-                put("correo", txtcorreo.text.toString())
-                put("tipo_usuario", spinnerTipoUsuario.selectedItem.toString())
-            }
-
-            val request = JsonObjectRequest(
-                Request.Method.POST,
-                config.urlUsuarios,
-                parametros,
-                { response ->
-                    Toast.makeText(context, "Usuario guardado correctamente", Toast.LENGTH_LONG).show()
-                },
-                { error ->
-                    Toast.makeText(context, "Error al guardar Usuario", Toast.LENGTH_LONG).show()
-                }
-            )
-            val queue = Volley.newRequestQueue(context)
-            queue.add(request)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Toast.makeText(context, "Error al guardar el usuario", Toast.LENGTH_LONG).show()
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -108,6 +55,67 @@ class guardarUsuarioFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun consultarUsuario() {
+        if (id_usuario.isNotEmpty()) {
+            val request = JsonObjectRequest(
+                Request.Method.GET,
+                config.urlUsuarios + id_usuario,
+                null,
+                { response ->
+                    val gson = Gson()
+                    val usuario = gson.fromJson(response.toString(), usuario::class.java)
+                    txtnombre_completo.setText(usuario.nombre_completo)
+                    txtdireccion.setText(usuario.direccion)
+                    txtcorreo.setText(usuario.correo)
+                    val adapter = spinnerTipoUsuario.adapter as ArrayAdapter<String>
+                    spinnerTipoUsuario.setSelection(adapter.getPosition(usuario.tipo_usuario))
+                    Toast.makeText(context, "Se consultó correctamente", Toast.LENGTH_LONG).show()
+                },
+                { error ->
+                    Toast.makeText(context, "Error al consultar", Toast.LENGTH_LONG).show()
+                }
+            )
+            val queue = Volley.newRequestQueue(context)
+            queue.add(request)
+        }
+    }
+
+    private fun guardarUsuario() {
+        try {
+            val parametros = JSONObject().apply {
+                put("nombre_completo", txtnombre_completo.text.toString())
+                put("direccion", txtdireccion.text.toString())
+                put("correo", txtcorreo.text.toString())
+                put("tipo_usuario", spinnerTipoUsuario.selectedItem.toString())
+            }
+
+            val request = JsonObjectRequest(
+                Request.Method.POST,
+                config.urlUsuarios,
+                parametros,
+                { response ->
+                    Toast.makeText(context, "Usuario guardado correctamente", Toast.LENGTH_LONG).show()
+                    limpiarCampos() // Llamar a la función para limpiar los campos
+                },
+                { error ->
+                    Toast.makeText(context, "Error al guardar Usuario", Toast.LENGTH_LONG).show()
+                }
+            )
+            val queue = Volley.newRequestQueue(context)
+            queue.add(request)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(context, "Error al guardar el usuario", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun limpiarCampos() {
+        txtnombre_completo.text.clear()
+        txtdireccion.text.clear()
+        txtcorreo.text.clear()
+        spinnerTipoUsuario.setSelection(0) // Restablece el spinner a la opción por defecto
     }
 
     companion object {

@@ -16,7 +16,7 @@ import com.example.crudlibrary.models.libro
 import com.google.gson.Gson
 import org.json.JSONObject
 
-class  guardarLibroFragment : Fragment() {
+class guardarLibroFragment : Fragment() {
 
     private lateinit var txtTitulo: EditText
     private lateinit var txtAutor: EditText
@@ -71,6 +71,7 @@ class  guardarLibroFragment : Fragment() {
                 parametros,
                 { response ->
                     Toast.makeText(context, "Libro guardado correctamente", Toast.LENGTH_LONG).show()
+                    limpiarCampos() // Llamar a la función para limpiar los campos
                 },
                 { error ->
                     Toast.makeText(context, "Error al guardar el libro", Toast.LENGTH_LONG).show()
@@ -82,6 +83,15 @@ class  guardarLibroFragment : Fragment() {
             e.printStackTrace()
             Toast.makeText(context, "Error al guardar el libro", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun limpiarCampos() {
+        txtTitulo.text.clear()
+        txtAutor.text.clear()
+        txtGenero.text.clear()
+        txtIsbn.text.clear()
+        txtDisponible.text.clear()
+        txtOcupado.text.clear()
     }
 
     override fun onCreateView(
